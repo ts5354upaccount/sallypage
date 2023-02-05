@@ -117,3 +117,88 @@ footer {
 .slider .slick-slide {
     margin:0 10px;/*スライド左右の余白調整*/
 }
+.btnshine{
+    /*キラッと光る基点とするためrelativeを指定*/
+	position: relative;
+    /*ボタンの形状*/
+	display:inline-block;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+}
+
+/*キラッと光る*/
+.btnshine::before {
+	content: '';
+    /*絶対配置でキラッと光るの位置を決める*/
+	position: absolute;
+	top: 0;
+	left: -75%;
+    /*キラッと光る形状*/
+    width: 50%;
+	height: 100%;
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	transform: skewX(-25deg);
+}
+
+/*hoverした際の移動のアニメーション*/
+.btnshine:hover::before {
+	animation: shine 0.7s;
+}
+
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+.btnlinestretches2{
+    /*線の基点とするためrelativeを指定*/
+	position:relative;
+    /*ボタンの形状*/
+	color:#333;
+    padding: 10px 30px;
+	display:inline-block;
+    text-decoration: none;
+    outline: none;
+}
+
+/*線の設定*/
+.btnlinestretches2::before,
+.btnlinestretches2::after {
+	content:'';
+    /*絶対配置で線の位置を決める*/
+	position:absolute;
+    /*事前に出現させる線の形状*/
+	border:solid #333;
+	width:10px;
+	height:10px;
+    /*アニメーションの指定*/
+	transition:all 0.3s ease-in-out;
+}
+
+.btnlinestretches2::before{
+    /*事前に出現させる線の位置*/
+	top:0;
+	left:0;
+    /*事前に出現させる線の形状*/
+	border-width:2px 0 0 2px;
+}
+
+.btnlinestretches2::after{
+    /*事前に出現させる線の位置*/
+	bottom:0;
+	right:0;
+    /*事前に出現させる線の形状*/
+	border-width:0 2px 2px 0;
+}
+
+/*hoverした際の線の形状*/
+.btnlinestretches2:hover::before,
+.btnlinestretches2:hover::after{
+	width:calc(100% - 2px);
+	height:calc(100% - 2px);
+	border-color:#666
+}
